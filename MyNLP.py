@@ -1,3 +1,7 @@
+#==============================================
+#=== Created by Magister Hector Andres Mora ===
+#=== GitHub: https://github.com/magohector ====
+#==============================================
 import matplotlib.pyplot as plt
 import networkx as nx
 #Método para obtener el producto vectorial de dos vectores
@@ -101,6 +105,7 @@ def pintarTesauro(tesauro):
     nx.draw(my_graph, pos=pos, with_labels=True, font_weight='bold', node_size=500)
     plt.show()
 
+# Se aporta a la biblioteca con el siguiente método.
 # Metodo para graficar el grafo
 def graph_science(graph):
     plt.figure(figsize=(16,16))
