@@ -1,5 +1,5 @@
 #==============================================
-#=== Created by Magister Hector Andres Mora ===
+#=== Created by Magister Héctor Andres Mora ===
 #=== GitHub: https://github.com/magohector ====
 #==============================================
 import matplotlib.pyplot as plt
