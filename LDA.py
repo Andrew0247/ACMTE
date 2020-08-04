@@ -34,6 +34,6 @@ class LDA():
 		# print(temas_glo) # Vivualizacion de una lista de los temas
 
 		grafica=pd.DataFrame(temas_glo, columns=['numero','temas'])
-		# print(grafica) # Se mira el dataframe de los temas por consola
+		print(grafica) # Se mira el dataframe de los temas por consola
 
 		return (grafica)

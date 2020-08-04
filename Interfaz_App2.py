@@ -2,23 +2,29 @@ import tkinter as tk, nltk, numpy as np, gensim
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg,NavigationToolbar2Tk
 from matplotlib.figure import Figure
 from gensim import corpora, models #Para construir una matriz de términos de documento
+from PIL import ImageTk, Image
+import os
 from Cargar_Archivos import Cargar
 from Frecuencia_Palabras import Frec_Pab
 from Padre_Sintactico import Padre_Sintactico
 from Nivel_Similitud import Nivel_Similitud
 from LDA import LDA
+from Graphs import Graphs
+# Importamos la biblioteca MyNLP
+from MyNLP import *
 
 carga_arc=Cargar()
 frec_pab=Frec_Pab()
 pad_sintac=Padre_Sintactico()
 niv_simi=Nivel_Similitud()
 lda_modelo = LDA()
+graphs_load = Graphs()
  
 root= tk.Tk()
 root.title("  PROTOTIPO INTERFAZ TRABAJO DE GRADO  ")
 
 # Canvas para graficar figuras, imagenes, etc
-canvas1 = tk.Canvas(root, width = 600, height = 300)
+canvas1 = tk.Canvas(root, width = 1000, height = 680)
 canvas1.pack(side=tk.LEFT)
 
 # Funcion donde se realiza el proceso para la frecuencia de palabras
@@ -440,20 +446,65 @@ def lda():
     label=tk.Label(ldaventana, text="  Los numeros decimales que aparecen antes de cada palabra significan los pesos de esas palabras en cada tema.  ").pack()
     label=tk.Label(ldaventana, text="  Esto quiere decir que los pesos reflejan la importancia de una palabra clave para el tema como tal.  ").pack()
 
-# Boton para realizar la frecuencia de palabras
-button1 = tk.Button (root, text=' Frecuencia de Palabras ',command=proceso_frecpab, font=('Arial', 11, 'bold'))
-canvas1.create_window(150, 50, window=button1)
+# Definimos la funcion para realizar el grafo con los 2 sustantivos mas comunes de cada documento
+def graphs_of_science():
+    archiv = carga_arc.carga_individual()
+    grafo = graphs_load.graphs(archiv)
+    graph_science(grafo)
+
+# Imagen para Frecuencia de Palabras
+imgf = Image.open("img\pf.jpg")
+imgf = imgf.resize((180,160), Image.ANTIALIAS)
+imgf = ImageTk.PhotoImage(imgf)
+label_1 = tk.Label(root, image=imgf)
+canvas1.create_window(250,150, window = label_1)
 
 # Boton para realizar la frecuencia de palabras
+button1 = tk.Button (root, text=' Frecuencia de Palabras ',command=proceso_frecpab, font=('Arial', 11, 'bold'))
+canvas1.create_window(250, 280, window=button1)
+
+# Imagen para Padre Sintactico
+imgp = Image.open("img\padsin.jpg")
+imp = imgp.resize((80,60), Image.ANTIALIAS)
+imgp = ImageTk.PhotoImage(imgp)
+label_2 = tk.Label(root, image=imgp)
+canvas1.create_window(750,150, window = label_2)
+
+# Boton para realizar Padre Sintactico
 button1 = tk.Button (root, text=' Padre Sintactico ',command=padre_sintac, font=('Arial', 11, 'bold'))
-canvas1.create_window(350, 50, window=button1)
+canvas1.create_window(750, 275, window=button1)
+
+# Imagen para Nivel de Similitud
+imgs = Image.open("img\simi.png")
+imgs = imgs.resize((180,160), Image.ANTIALIAS)
+imgs = ImageTk.PhotoImage(imgs)
+label_3 = tk.Label(root, image=imgs)
+canvas1.create_window(250,450, window = label_3)
 
 # Boton para realizar el Nivel de Similitud
 button1 = tk.Button (root, text=' Nivel de Similitud ',command=nivel_simi, font=('Arial', 11, 'bold'))
-canvas1.create_window(150, 100, window=button1)
+canvas1.create_window(250, 570, window=button1)
+
+# Imagen para LDA
+imgld = Image.open("img\lda.png")
+imgld = imgld.resize((180,160), Image.ANTIALIAS)
+imgld = ImageTk.PhotoImage(imgld)
+label_4 = tk.Label(root, image=imgld)
+canvas1.create_window(750,450, window = label_4)
 
 # Boton para realizar LDA
 button1 = tk.Button (root, text=' Temas Globales ',command=lda, font=('Arial', 11, 'bold'))
-canvas1.create_window(350, 100, window=button1)
+canvas1.create_window(750, 570, window=button1)
+
+# Imagen para graphs_of_science
+imggs = Image.open("img\graphs.jpg")
+imggs = imggs.resize((180,160), Image.ANTIALIAS)
+imggs = ImageTk.PhotoImage(imggs)
+label_5 = tk.Label(root, image=imggs)
+canvas1.create_window(500,300, window = label_5)
+
+# Boton para realizar graphs_of_science
+button1 = tk.Button (root, text = ' Graphs Of Science ', command = graphs_of_science, font = ('Arial', 11, 'bold'))
+canvas1.create_window(500, 420, window = button1)
  
 root.mainloop()
