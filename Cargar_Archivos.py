@@ -1,4 +1,4 @@
-import easygui as eg
+import easygui as eg, pathlib as ph, pandas as pd
 from os import scandir, getcwd
 
 archivos = []
@@ -13,12 +13,18 @@ class Cargar():
                        default='')
 
         for archivo in self.ls(directorio):
-            f=open(archivo,'r')
+            # f=open(archivo,'r')
+            f=open(archivo, encoding="utf8")
             texto=f.read()
 
             archivos.append(texto)
 
-        return archivos
+        directory = ph.Path(directorio)
+        nombre_archivos = [fichero.name for fichero in directory.iterdir() if fichero.is_file()]
+        data = {'Titulo':nombre_archivos, 'Archivos':archivos}
+        archivos_pd = pd.DataFrame(data)
+
+        return archivos_pd
 
     def carga_individual(self):
         archivo = eg.fileopenbox(msg = "Abrir articulo a Graficar",
@@ -26,7 +32,7 @@ class Cargar():
                     default = '',
                     filetypes = ["*.txt"])
 
-        f = open(archivo, 'r')
+        f = open(archivo, encoding="utf8")
         texto = f.read()
         archivos.append(texto)
 

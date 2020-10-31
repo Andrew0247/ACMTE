@@ -7,8 +7,6 @@ import pandas as pd
 
 sec_part=Seccionar_Partes()
 
-archivos = []
-archiv = []
 nivelSim=[]
 art1_6=[]
 art2_6=[]
@@ -20,6 +18,7 @@ art5_6=[]
 class Nivel_Similitud():
 
     def nivel_similitud(self, articulo, proceso, archivos):
+        archivos = archivos['Archivos']
         texto=[]
         arch=len(archivos)
         # Realizamos el seccionamiento de las partes
@@ -27,7 +26,7 @@ class Nivel_Similitud():
             texto = archivos[i]
             frag = sec_part.seccionar_partes(texto, proceso,1)
             # archiv.append(frag)
-                   
+
         nlp = spacy.load('en_core_web_lg')#importamos un modelo grande
         
         # articulos del 1-2 al 1-6
@@ -38,7 +37,7 @@ class Nivel_Similitud():
         	doc2_2=nlp(doc2)
         	niv = round(doc1_1.similarity(doc2_2), 4)
         	art1_6.append(niv)
-            
+
         # articulos del 2-3 al 2-6
         for j in range(2,6):
         	doc1 = frag[1]
@@ -80,7 +79,7 @@ class Nivel_Similitud():
         nivelSim.append(art3_6)
         nivelSim.append(art4_6)
         nivelSim.append(art5_6)
-        print(nivelSim)
-        
+		# print(nivelSim)
+
         # Retornamos el nivel de similitud
         return (nivelSim)

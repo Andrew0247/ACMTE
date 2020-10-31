@@ -19,6 +19,10 @@ pad_sintac=Padre_Sintactico()
 niv_simi=Nivel_Similitud()
 lda_modelo = LDA()
 graphs_load = Graphs()
+
+# variables globales para imagenes en las ventanas 
+# "padre sintactico" y "nivel de similitud"
+global imgo, imgm, imgr, imgc
  
 root= tk.Tk()
 root.title("  PROTOTIPO INTERFAZ TRABAJO DE GRADO  ")
@@ -43,42 +47,42 @@ def proceso_frecpab():
     yArt1 = frecuencia.palabras.loc[0]
     xArt1 = frecuencia.frecuencia.loc[0]
     subplot1.plot(xArt1,yArt1, 'b-.') # Graficamos la frecuencia de palabras en un diagrama de barras
-    subplot1.set_title("Cognitive Neuroscience Of Human Social Behaviour")
+    subplot1.set_title(archiv.Titulo.loc[0])
     subplot1.grid()
     
     subplot1 = figure1.add_subplot(322) # Se añade un subplot para el matplotlib donde se graficara dicha frecuencia
     yArt2 = frecuencia.palabras.loc[1]
     xArt2 = frecuencia.frecuencia.loc[1]
     subplot1.plot(xArt2,yArt2, 'r-.') # Graficamos la frecuencia de palabras en un diagrama de barras
-    subplot1.set_title("The Cognitive Neuroscience Of Ageing")
+    subplot1.set_title(archiv.Titulo.loc[1])
     subplot1.grid()
 
     subplot1 = figure1.add_subplot(323) # Se añade un subplot para el matplotlib donde se graficara dicha frecuencia
     yArt3 = frecuencia.palabras.loc[2]
     xArt3 = frecuencia.frecuencia.loc[2]
     subplot1.plot(xArt3,yArt3, 'g-.') # Graficamos la frecuencia de palabras en un diagrama de barras
-    subplot1.set_title("The Cognitive Neuroscience Of Ageing")
+    subplot1.set_title(archiv.Titulo.loc[2])
     subplot1.grid()
 
     subplot1 = figure1.add_subplot(324) # Se añade un subplot para el matplotlib donde se graficara dicha frecuencia
     yArt4 = frecuencia.palabras.loc[3]
     xArt4 = frecuencia.frecuencia.loc[3]
     subplot1.plot(xArt4,yArt4, 'c-.') # Graficamos la frecuencia de palabras en un diagrama de barras
-    subplot1.set_title("Intuition: A Social Cognitive Neuroscience Approach")
+    subplot1.set_title(archiv.Titulo.loc[3])
     subplot1.grid()
 
     subplot1 = figure1.add_subplot(325) # Se añade un subplot para el matplotlib donde se graficara dicha frecuencia
     yArt5 = frecuencia.palabras.loc[4]
     xArt5 = frecuencia.frecuencia.loc[4]
     subplot1.plot(xArt5,yArt5, 'm-.') # Graficamos la frecuencia de palabras en un diagrama de barras
-    subplot1.set_title("Social Cognitive Neuroscience")
+    subplot1.set_title(archiv.Titulo.loc[4])
     subplot1.grid()
 
     subplot1 = figure1.add_subplot(326) # Se añade un subplot para el matplotlib donde se graficara dicha frecuencia
     yArt6 = frecuencia.palabras.loc[5]
     xArt6 = frecuencia.frecuencia.loc[5]
     subplot1.plot(xArt6,yArt6, 'y-.') # Graficamos la frecuencia de palabras en un diagrama de barras
-    subplot1.set_title("Transcranial Magnetic Stimulation And Cognitive Neuroscience")
+    subplot1.set_title(archiv.Titulo.loc[5])
     subplot1.grid()
 
     bar1 = FigureCanvasTkAgg(figure1, frecp) # Añadimos dicho grafico a la Interfaz grafica
@@ -86,24 +90,56 @@ def proceso_frecpab():
     toolbar = NavigationToolbar2Tk(bar1, frecp)# barra de iconos para guardar o configurar el grafico
     toolbar.update()
     bar1.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=1)
-    
+
 # Funcion donde se realiza el proceso del padre sintactico
 def padre_sintac():
     padS=tk.Toplevel()
     padS.title(" Padre Sintactico ")
-    padS.geometry('400x400')
+    padS.geometry('400x430')
+
+    # Imagen para Objetivo
+    imgo = Image.open("img\objetivo.jpg")
+    imgo = imgo.resize((120,130), Image.ANTIALIAS)
+    imgo = ImageTk.PhotoImage(imgo)
+    label_1 = tk.Label(padS, image=imgo)
+    label_1.image = imgo
+    label_1.place(x = 30, y = 20)
 
     button1 = tk.Button (padS, text=' Objetivo ',command=objetivo, font=('Arial', 11, 'bold'))
-    button1.place(x=150, y=150)
+    button1.place(x = 43, y = 163)
+
+    # Imagen para Metodo
+    imgm = Image.open("img\metodos.png")
+    imgm = imgm.resize((120,130), Image.ANTIALIAS)
+    imgm = ImageTk.PhotoImage(imgm)
+    label_1 = tk.Label(padS, image=imgm)
+    label_1.image = imgm
+    label_1.place(x = 250, y = 20)
 
     button1 = tk.Button (padS, text=' Metodo ',command=metodo, font=('Arial', 11, 'bold'))
-    button1.place(x=150, y=200)
+    button1.place(x = 275, y = 163)
+
+    # Imagen para Resultados
+    imgr = Image.open("img\Resultados.png")
+    imgr = imgr.resize((120,130), Image.ANTIALIAS)
+    imgr = ImageTk.PhotoImage(imgr)
+    label_1 = tk.Label(padS, image=imgr)
+    label_1.image = imgr
+    label_1.place(x = 30, y = 220)
 
     button1 = tk.Button (padS, text=' Resultados ',command=resultado, font=('Arial', 11, 'bold'))
-    button1.place(x=150, y=250)
+    button1.place(x = 40, y = 365)
+
+    # Imagen para Conclusion
+    imgc = Image.open("img\conclusion2.jpg")
+    imgc = imgc.resize((120,130), Image.ANTIALIAS)
+    imgc = ImageTk.PhotoImage(imgc)
+    label_1 = tk.Label(padS, image=imgc)
+    label_1.image = imgc
+    label_1.place(x = 250, y = 220)
 
     button1 = tk.Button (padS, text=' Conclusion ',command=conclusion, font=('Arial', 11, 'bold'))
-    button1.place(x=150, y=300)
+    button1.place(x = 260, y = 365)
 
 def objetivo():
     global bar1
@@ -118,14 +154,14 @@ def objetivo():
     yArt1 = pad_sintac1.padres.loc[0]
     xArt1 = pad_sintac1.frecuencia.loc[0]
     subplot1.plot(xArt1,yArt1, 'b-.') # Graficamos la frecuencia de padres en un diagrama de barras
-    subplot1.set_title("articulo 1")
+    subplot1.set_title(archiv.Titulo.loc[0])
     subplot1.grid()
     
     subplot1 = figure1.add_subplot(322) # Se añade un subplot para el matplotlib donde se graficara dicha frecuencia
     yArt2 = pad_sintac1.padres.loc[1]
     xArt2 = pad_sintac1.frecuencia.loc[1]
     subplot1.plot(xArt2,yArt2, 'r-.') # Graficamos la frecuencia de padres en un diagrama de barras
-    subplot1.set_title("articulo 2")
+    subplot1.set_title(archiv.Titulo.loc[1])
     subplot1.grid()
     # subplot1.title(' Art2 ', fontsize=12)
 
@@ -133,28 +169,28 @@ def objetivo():
     yArt3 = pad_sintac1.padres.loc[2]
     xArt3 = pad_sintac1.frecuencia.loc[2]
     subplot1.plot(xArt3,yArt3, 'g-.') # Graficamos la frecuencia de padres en un diagrama de barras
-    subplot1.set_title("articulo 3")
+    subplot1.set_title(archiv.Titulo.loc[2])
     subplot1.grid()
 
     subplot1 = figure1.add_subplot(324) # Se añade un subplot para el matplotlib donde se graficara dicha frecuencia
     yArt4 = pad_sintac1.padres.loc[3]
     xArt4 = pad_sintac1.frecuencia.loc[3]
     subplot1.plot(xArt4,yArt4, 'c-.') # Graficamos la frecuencia de padres en un diagrama de barras
-    subplot1.set_title("articulo 4")
+    subplot1.set_title(archiv.Titulo.loc[3])
     subplot1.grid()
 
     subplot1 = figure1.add_subplot(325) # Se añade un subplot para el matplotlib donde se graficara dicha frecuencia
     yArt5 = pad_sintac1.padres.loc[4]
     xArt5 = pad_sintac1.frecuencia.loc[4]
     subplot1.plot(xArt5,yArt5, 'm-.') # Graficamos la frecuencia de padres en un diagrama de barras
-    subplot1.set_title("articulo 5")
+    subplot1.set_title(archiv.Titulo.loc[4])
     subplot1.grid()
 
     subplot1 = figure1.add_subplot(326) # Se añade un subplot para el matplotlib donde se graficara dicha frecuencia
     yArt6 = pad_sintac1.padres.loc[5]
     xArt6 = pad_sintac1.frecuencia.loc[5]
     subplot1.plot(xArt6,yArt6, 'y-.') # Graficamos la frecuencia de padres en un diagrama de barras
-    subplot1.set_title("articulo 6")
+    subplot1.set_title(archiv.Titulo.loc[5])
     subplot1.grid()
 
     bar1 = FigureCanvasTkAgg(figure1, padS) # Añadimos dicho grafico a la Interfaz grafica
@@ -176,42 +212,43 @@ def metodo():
     yArt1 = pad_sintac1.padres.loc[0]
     xArt1 = pad_sintac1.frecuencia.loc[0]
     subplot1.plot(xArt1,yArt1, 'b-.') # Graficamos la frecuencia de padres en un diagrama de barras
-    subplot1.set_title("articulo 1")
+    subplot1.set_title(archiv.Titulo.loc[0])
     subplot1.grid()
     
     subplot1 = figure1.add_subplot(322) # Se añade un subplot para el matplotlib donde se graficara dicha frecuencia
     yArt2 = pad_sintac1.padres.loc[1]
     xArt2 = pad_sintac1.frecuencia.loc[1]
     subplot1.plot(xArt2,yArt2, 'r-.') # Graficamos la frecuencia de padres en un diagrama de barras
-    subplot1.set_title("articulo 2")
+    subplot1.set_title(archiv.Titulo.loc[1])
     subplot1.grid()
+    # subplot1.title(' Art2 ', fontsize=12)
 
     subplot1 = figure1.add_subplot(323) # Se añade un subplot para el matplotlib donde se graficara dicha frecuencia
     yArt3 = pad_sintac1.padres.loc[2]
     xArt3 = pad_sintac1.frecuencia.loc[2]
     subplot1.plot(xArt3,yArt3, 'g-.') # Graficamos la frecuencia de padres en un diagrama de barras
-    subplot1.set_title("articulo 3")
+    subplot1.set_title(archiv.Titulo.loc[2])
     subplot1.grid()
 
     subplot1 = figure1.add_subplot(324) # Se añade un subplot para el matplotlib donde se graficara dicha frecuencia
     yArt4 = pad_sintac1.padres.loc[3]
     xArt4 = pad_sintac1.frecuencia.loc[3]
     subplot1.plot(xArt4,yArt4, 'c-.') # Graficamos la frecuencia de padres en un diagrama de barras
-    subplot1.set_title("articulo 4")
+    subplot1.set_title(archiv.Titulo.loc[3])
     subplot1.grid()
 
     subplot1 = figure1.add_subplot(325) # Se añade un subplot para el matplotlib donde se graficara dicha frecuencia
     yArt5 = pad_sintac1.padres.loc[4]
     xArt5 = pad_sintac1.frecuencia.loc[4]
     subplot1.plot(xArt5,yArt5, 'm-.') # Graficamos la frecuencia de padres en un diagrama de barras
-    subplot1.set_title("articulo 5")
+    subplot1.set_title(archiv.Titulo.loc[4])
     subplot1.grid()
 
     subplot1 = figure1.add_subplot(326) # Se añade un subplot para el matplotlib donde se graficara dicha frecuencia
     yArt6 = pad_sintac1.padres.loc[5]
     xArt6 = pad_sintac1.frecuencia.loc[5]
     subplot1.plot(xArt6,yArt6, 'y-.') # Graficamos la frecuencia de padres en un diagrama de barras
-    subplot1.set_title("articulo 6")
+    subplot1.set_title(archiv.Titulo.loc[5])
     subplot1.grid()
 
     bar1 = FigureCanvasTkAgg(figure1, padS) # Añadimos dicho grafico a la Interfaz grafica
@@ -233,42 +270,43 @@ def resultado():
     yArt1 = pad_sintac1.padres.loc[0]
     xArt1 = pad_sintac1.frecuencia.loc[0]
     subplot1.plot(xArt1,yArt1, 'b-.') # Graficamos la frecuencia de padres en un diagrama de barras
-    subplot1.set_title("Cognitive Neuroscience Of Human Social Behaviour")
+    subplot1.set_title(archiv.Titulo.loc[0])
     subplot1.grid()
     
     subplot1 = figure1.add_subplot(322) # Se añade un subplot para el matplotlib donde se graficara dicha frecuencia
     yArt2 = pad_sintac1.padres.loc[1]
     xArt2 = pad_sintac1.frecuencia.loc[1]
     subplot1.plot(xArt2,yArt2, 'r-.') # Graficamos la frecuencia de padres en un diagrama de barras
-    subplot1.set_title("The Cognitive Neuroscience Of Ageing")
+    subplot1.set_title(archiv.Titulo.loc[1])
     subplot1.grid()
+    # subplot1.title(' Art2 ', fontsize=12)
 
     subplot1 = figure1.add_subplot(323) # Se añade un subplot para el matplotlib donde se graficara dicha frecuencia
     yArt3 = pad_sintac1.padres.loc[2]
     xArt3 = pad_sintac1.frecuencia.loc[2]
     subplot1.plot(xArt3,yArt3, 'g-.') # Graficamos la frecuencia de padres en un diagrama de barras
-    subplot1.set_title("The Cognitive Neuroscience Of Ageing")
+    subplot1.set_title(archiv.Titulo.loc[2])
     subplot1.grid()
 
     subplot1 = figure1.add_subplot(324) # Se añade un subplot para el matplotlib donde se graficara dicha frecuencia
     yArt4 = pad_sintac1.padres.loc[3]
     xArt4 = pad_sintac1.frecuencia.loc[3]
     subplot1.plot(xArt4,yArt4, 'c-.') # Graficamos la frecuencia de padres en un diagrama de barras
-    subplot1.set_title("Intuition: A Social Cognitive Neuroscience Approach")
+    subplot1.set_title(archiv.Titulo.loc[3])
     subplot1.grid()
 
     subplot1 = figure1.add_subplot(325) # Se añade un subplot para el matplotlib donde se graficara dicha frecuencia
     yArt5 = pad_sintac1.padres.loc[4]
     xArt5 = pad_sintac1.frecuencia.loc[4]
     subplot1.plot(xArt5,yArt5, 'm-.') # Graficamos la frecuencia de padres en un diagrama de barras
-    subplot1.set_title("Social Cognitive Neuroscience")
+    subplot1.set_title(archiv.Titulo.loc[4])
     subplot1.grid()
 
     subplot1 = figure1.add_subplot(326) # Se añade un subplot para el matplotlib donde se graficara dicha frecuencia
     yArt6 = pad_sintac1.padres.loc[5]
     xArt6 = pad_sintac1.frecuencia.loc[5]
     subplot1.plot(xArt6,yArt6, 'y-.') # Graficamos la frecuencia de padres en un diagrama de barras
-    subplot1.set_title("Transcranial Magnetic Stimulation And Cognitive Neuroscience")
+    subplot1.set_title(archiv.Titulo.loc[5])
     subplot1.grid()
 
     bar1 = FigureCanvasTkAgg(figure1, padS) # Añadimos dicho grafico a la Interfaz grafica
@@ -290,42 +328,43 @@ def conclusion():
     yArt1 = pad_sintac1.padres.loc[0]
     xArt1 = pad_sintac1.frecuencia.loc[0]
     subplot1.plot(xArt1,yArt1, 'b-.') # Graficamos la frecuencia de padres en un diagrama de barras
-    subplot1.set_title("articulo 1")
+    subplot1.set_title(archiv.Titulo.loc[0])
     subplot1.grid()
     
     subplot1 = figure1.add_subplot(322) # Se añade un subplot para el matplotlib donde se graficara dicha frecuencia
     yArt2 = pad_sintac1.padres.loc[1]
     xArt2 = pad_sintac1.frecuencia.loc[1]
     subplot1.plot(xArt2,yArt2, 'r-.') # Graficamos la frecuencia de padres en un diagrama de barras
-    subplot1.set_title("articulo 2")
+    subplot1.set_title(archiv.Titulo.loc[1])
     subplot1.grid()
+    # subplot1.title(' Art2 ', fontsize=12)
 
     subplot1 = figure1.add_subplot(323) # Se añade un subplot para el matplotlib donde se graficara dicha frecuencia
     yArt3 = pad_sintac1.padres.loc[2]
     xArt3 = pad_sintac1.frecuencia.loc[2]
     subplot1.plot(xArt3,yArt3, 'g-.') # Graficamos la frecuencia de padres en un diagrama de barras
-    subplot1.set_title("articulo 3")
+    subplot1.set_title(archiv.Titulo.loc[2])
     subplot1.grid()
 
     subplot1 = figure1.add_subplot(324) # Se añade un subplot para el matplotlib donde se graficara dicha frecuencia
     yArt4 = pad_sintac1.padres.loc[3]
     xArt4 = pad_sintac1.frecuencia.loc[3]
     subplot1.plot(xArt4,yArt4, 'c-.') # Graficamos la frecuencia de padres en un diagrama de barras
-    subplot1.set_title("articulo 4")
+    subplot1.set_title(archiv.Titulo.loc[3])
     subplot1.grid()
 
     subplot1 = figure1.add_subplot(325) # Se añade un subplot para el matplotlib donde se graficara dicha frecuencia
     yArt5 = pad_sintac1.padres.loc[4]
     xArt5 = pad_sintac1.frecuencia.loc[4]
     subplot1.plot(xArt5,yArt5, 'm-.') # Graficamos la frecuencia de padres en un diagrama de barras
-    subplot1.set_title("articulo 5")
+    subplot1.set_title(archiv.Titulo.loc[4])
     subplot1.grid()
 
     subplot1 = figure1.add_subplot(326) # Se añade un subplot para el matplotlib donde se graficara dicha frecuencia
     yArt6 = pad_sintac1.padres.loc[5]
     xArt6 = pad_sintac1.frecuencia.loc[5]
     subplot1.plot(xArt6,yArt6, 'y-.') # Graficamos la frecuencia de padres en un diagrama de barras
-    subplot1.set_title("articulo 6")
+    subplot1.set_title(archiv.Titulo.loc[5])
     subplot1.grid()
 
     bar1 = FigureCanvasTkAgg(figure1, padS) # Añadimos dicho grafico a la Interfaz grafica
@@ -338,21 +377,51 @@ def conclusion():
 def nivel_simi():
     simiN=tk.Toplevel()
     simiN.title(" Nivel de Similitud ")
-    simiN.geometry('400x400')
-    # canvas2=tk.Canvas(simiN, width=900, height=400)
+    simiN.geometry('400x430')
+
+    # Imagen para Objetivo
+    imgo = Image.open("img\objetivo.jpg")
+    imgo = imgo.resize((120,130), Image.ANTIALIAS)
+    imgo = ImageTk.PhotoImage(imgo)
+    label_1 = tk.Label(simiN, image=imgo)
+    label_1.image = imgo
+    label_1.place(x = 30, y = 20)
 
     button1 = tk.Button (simiN, text=' Objetivo ',command=objetivo2, font=('Arial', 11, 'bold'))
-    button1.place(x=150, y=150)
-    # canvas2.create_window(100, 50, window=button1)
+    button1.place(x = 43, y = 163)
+
+    # Imagen para Metodo
+    imgm = Image.open("img\metodos.png")
+    imgm = imgm.resize((120,130), Image.ANTIALIAS)
+    imgm = ImageTk.PhotoImage(imgm)
+    label_1 = tk.Label(simiN, image=imgm)
+    label_1.image = imgm
+    label_1.place(x = 250, y = 20)
 
     button1 = tk.Button (simiN, text=' Metodo ',command=metodo2, font=('Arial', 11, 'bold'))
-    button1.place(x=150, y=200)
+    button1.place(x = 275, y = 163)
+
+    # Imagen para Resultados
+    imgr = Image.open("img\Resultados.png")
+    imgr = imgr.resize((120,130), Image.ANTIALIAS)
+    imgr = ImageTk.PhotoImage(imgr)
+    label_1 = tk.Label(simiN, image=imgr)
+    label_1.image = imgr
+    label_1.place(x = 30, y = 220)
 
     button1 = tk.Button (simiN, text=' Resultados ',command=resultado2, font=('Arial', 11, 'bold'))
-    button1.place(x=150, y=250)
+    button1.place(x = 40, y = 365)
+
+    # Imagen para Conclusion
+    imgc = Image.open("img\conclusion2.jpg")
+    imgc = imgc.resize((120,130), Image.ANTIALIAS)
+    imgc = ImageTk.PhotoImage(imgc)
+    label_1 = tk.Label(simiN, image=imgc)
+    label_1.image = imgc
+    label_1.place(x = 250, y = 220)
 
     button1 = tk.Button (simiN, text=' Conclusion ',command=conclusion2, font=('Arial', 11, 'bold'))
-    button1.place(x=150, y=300)
+    button1.place(x = 260, y = 365)
 
 def objetivo2():
     archiv=carga_arc.cargar_archivos()
@@ -376,6 +445,7 @@ def objetivo2():
     label=tk.Label(simiN, text=niv4).pack(side=tk.TOP)
     label=tk.Label(simiN, text=" Articulos Combinados: 5-6 ").pack(side=tk.TOP)
     label=tk.Label(simiN, text=niv5).pack(side=tk.TOP)
+    Button = tk.Button(simiN, command=mostrar_titulo_NS(archiv), font=('Arial', 11, 'bold')).pack(side = tk.RIGHT)
 
 def metodo2():
     archiv=carga_arc.cargar_archivos()
@@ -399,6 +469,7 @@ def metodo2():
     label=tk.Label(simiN, text=niv4).pack(side=tk.TOP)
     label=tk.Label(simiN, text=" Articulos Combinados: 5-6 ").pack(side=tk.TOP)
     label=tk.Label(simiN, text=niv5).pack(side=tk.TOP)
+    Button = tk.Button(simiN, command=mostrar_titulo_NS(archiv), font=('Arial', 11, 'bold')).pack(side = tk.RIGHT)
 
 def resultado2():
     # numero=1
@@ -424,6 +495,7 @@ def resultado2():
     label=tk.Label(simiN, text=niv4).pack(side=tk.TOP)
     label=tk.Label(simiN, text=" Articulos Combinados: 5-6 ").pack(side=tk.TOP)
     label=tk.Label(simiN, text=niv5).pack(side=tk.TOP)
+    Button = tk.Button(simiN, command=mostrar_titulo_NS(archiv), font=('Arial', 11, 'bold')).pack(side = tk.RIGHT)
 
 def conclusion2():
     archiv=carga_arc.cargar_archivos()
@@ -447,6 +519,25 @@ def conclusion2():
     label=tk.Label(simiN, text=niv4).pack(side=tk.TOP)
     label=tk.Label(simiN, text=" Articulos Combinados: 5-6 ").pack(side=tk.TOP)
     label=tk.Label(simiN, text=niv5).pack(side=tk.TOP)
+    Button = tk.Button(simiN, command=mostrar_titulo_NS(archiv), font=('Arial', 11, 'bold')).pack(side = tk.RIGHT)
+
+# Función para mostrar los titulos de los articulos para el nivel de similitud
+def mostrar_titulo_NS(archivos):
+    titulos = tk.Toplevel()
+    titulos.title(" Titulos de los Artículos ")
+    titulos.geometry('510x400+300+250')
+    label=tk.Label(titulos, text=" Articulo 1 = ").grid(row = 1, column = 2, padx = 20, pady = 20)
+    label=tk.Label(titulos, text=archivos.Titulo.loc[0]).grid(row = 1, column = 3)
+    label=tk.Label(titulos, text=" Articulo 2 = ").grid(row = 2, column = 2, padx = 20, pady = 20)
+    label=tk.Label(titulos, text=archivos.Titulo.loc[1]).grid(row = 2, column = 3)
+    label=tk.Label(titulos, text=" Articulo 3 = ").grid(row = 3, column = 2, padx = 20, pady = 20)
+    label=tk.Label(titulos, text=archivos.Titulo.loc[2]).grid(row = 3, column = 3)
+    label=tk.Label(titulos, text=" Articulo 4 = ").grid(row = 4, column = 2, padx = 20, pady = 20)
+    label=tk.Label(titulos, text=archivos.Titulo.loc[3]).grid(row = 4, column = 3)
+    label=tk.Label(titulos, text=" Articulo 5 = ").grid(row = 5, column = 2, padx = 20, pady = 20)
+    label=tk.Label(titulos, text=archivos.Titulo.loc[4]).grid(row = 5, column = 3)
+    label=tk.Label(titulos, text=" Articulo 6 = ").grid(row = 6, column = 2, padx = 20, pady = 20)
+    label=tk.Label(titulos, text=archivos.Titulo.loc[5]).grid(row = 6, column = 3)
 
 # Se definira una funcionpara sacar los temas con el algoritmo LDA
 def lda():
@@ -491,7 +582,7 @@ canvas1.create_window(250, 280, window=button1)
 
 # Imagen para Padre Sintactico
 imgp = Image.open("img\padsin.jpg")
-imp = imgp.resize((80,60), Image.ANTIALIAS)
+imp = imgp.resize((660,160), Image.ANTIALIAS)
 imgp = ImageTk.PhotoImage(imgp)
 label_2 = tk.Label(root, image=imgp)
 canvas1.create_window(750,150, window = label_2)
@@ -512,7 +603,7 @@ button1 = tk.Button (root, text=' Nivel de Similitud ',command=nivel_simi, font=
 canvas1.create_window(250, 570, window=button1)
 
 # Imagen para LDA
-imgld = Image.open("img\lda.png")
+imgld = Image.open("img\lda.jpg")
 imgld = imgld.resize((180,160), Image.ANTIALIAS)
 imgld = ImageTk.PhotoImage(imgld)
 label_4 = tk.Label(root, image=imgld)
@@ -523,7 +614,7 @@ button1 = tk.Button (root, text=' Temas Globales ',command=lda, font=('Arial', 1
 canvas1.create_window(750, 570, window=button1)
 
 # Imagen para graphs_of_science
-imggs = Image.open("img\graphs.jpg")
+imggs = Image.open("img\grafo.png")
 imggs = imggs.resize((180,160), Image.ANTIALIAS)
 imggs = ImageTk.PhotoImage(imggs)
 label_5 = tk.Label(root, image=imggs)

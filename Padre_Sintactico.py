@@ -10,14 +10,13 @@ sec_part=Seccionar_Partes()
 palabras = []
 frecuencia = []
 
-archivos = []
-archiv = []
 
 # ============ Metodo Para El Proceso: Padre Sintactico ==============
 class Padre_Sintactico():
 
 	def padre_sintactico(self, articulo, proceso, archivos):
 		texto=[]
+		archivos = archivos['Archivos']
 		arch=len(archivos)
 		for i in range(arch):
 			texto = archivos[i]

@@ -14,6 +14,7 @@ frecuencia = []
 class Frec_Pab():
     
     def frecuencia_palabras(self, archivos):
+        archivos = archivos['Archivos']
         nume=len(archivos)
         for i in range(nume):
             texto = archivos[i]

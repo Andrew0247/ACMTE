@@ -15,6 +15,7 @@ textos_por = []
 class LDA():
 
 	def lda(self, archivos):
+		archivos = archivos['Archivos']
 		nume=len(archivos)
 		for i in range(nume):
 			texto = archivos[i]
