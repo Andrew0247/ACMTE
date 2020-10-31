@@ -36,16 +36,16 @@ class Nivel_Similitud():
         	doc2 = frag[i]
         	doc1_1=nlp(doc1)
         	doc2_2=nlp(doc2)
-        	niv=doc1_1.similarity(doc2_2)
+        	niv = round(doc1_1.similarity(doc2_2), 4)
         	art1_6.append(niv)
-        
+            
         # articulos del 2-3 al 2-6
         for j in range(2,6):
         	doc1 = frag[1]
         	doc2 = frag[j]
         	doc1_1=nlp(doc1)
         	doc2_2=nlp(doc2)
-        	niv=doc1_1.similarity(doc2_2)
+        	niv = round(doc1_1.similarity(doc2_2), 4)
         	art2_6.append(niv)
 
         # articulos del 3-4 al 3-6
@@ -54,7 +54,7 @@ class Nivel_Similitud():
         	doc2 = frag[j]
         	doc1_1=nlp(doc1)
         	doc2_2=nlp(doc2)
-        	niv=doc1_1.similarity(doc2_2)
+        	niv= round(doc1_1.similarity(doc2_2), 4)
         	art3_6.append(niv)
 
         # articulos del 4-5 al 4-6
@@ -63,7 +63,7 @@ class Nivel_Similitud():
         	doc2 = frag[j]
         	doc1_1=nlp(doc1)
         	doc2_2=nlp(doc2)
-        	niv=doc1_1.similarity(doc2_2)
+        	niv = round(doc1_1.similarity(doc2_2), 4)
         	art4_6.append(niv)
 
         # articulos del 2-3 al 2-6
@@ -72,7 +72,7 @@ class Nivel_Similitud():
         	doc2 = frag[j]
         	doc1_1=nlp(doc1)
         	doc2_2=nlp(doc2)
-        	niv=doc1_1.similarity(doc2_2)
+        	niv = round(doc1_1.similarity(doc2_2), 4)
         	art5_6.append(niv)
 
         nivelSim.append(art1_6)

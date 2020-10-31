@@ -11,7 +11,7 @@ from Nivel_Similitud import Nivel_Similitud
 from LDA import LDA
 from Graphs import Graphs
 # Importamos la biblioteca MyNLP
-from MyNLP import *
+from Tesauros_NLP import *
 
 carga_arc=Cargar()
 frec_pab=Frec_Pab()
@@ -31,7 +31,6 @@ canvas1.pack(side=tk.LEFT)
 def proceso_frecpab():
     global bar1
 
-    numero = int(6)
     archiv=carga_arc.cargar_archivos()
     # Aqui Creamos la Ventana donde se mostrara  la frecuencia de Palabras
     frecp=tk.Toplevel()
@@ -43,55 +42,59 @@ def proceso_frecpab():
     subplot1 = figure1.add_subplot(321) # Se añade un subplot para el matplotlib donde se graficara dicha frecuencia
     yArt1 = frecuencia.palabras.loc[0]
     xArt1 = frecuencia.frecuencia.loc[0]
-    subplot1.bar(xArt1,yArt1, align='center') # Graficamos la frecuencia de palabras en un diagrama de barras
-    # subplot1.title(' Art1 ', fontsize=12)
+    subplot1.plot(xArt1,yArt1, 'b-.') # Graficamos la frecuencia de palabras en un diagrama de barras
+    subplot1.set_title("Cognitive Neuroscience Of Human Social Behaviour")
+    subplot1.grid()
     
     subplot1 = figure1.add_subplot(322) # Se añade un subplot para el matplotlib donde se graficara dicha frecuencia
     yArt2 = frecuencia.palabras.loc[1]
     xArt2 = frecuencia.frecuencia.loc[1]
-    subplot1.bar(xArt2,yArt2, align='center') # Graficamos la frecuencia de palabras en un diagrama de barras
-    # subplot1.title(' Art2 ', fontsize=12)
+    subplot1.plot(xArt2,yArt2, 'r-.') # Graficamos la frecuencia de palabras en un diagrama de barras
+    subplot1.set_title("The Cognitive Neuroscience Of Ageing")
+    subplot1.grid()
 
     subplot1 = figure1.add_subplot(323) # Se añade un subplot para el matplotlib donde se graficara dicha frecuencia
     yArt3 = frecuencia.palabras.loc[2]
     xArt3 = frecuencia.frecuencia.loc[2]
-    subplot1.bar(xArt3,yArt3, align='center') # Graficamos la frecuencia de palabras en un diagrama de barras
-    # subplot1.title(' Art3 ', fontsize=12)
+    subplot1.plot(xArt3,yArt3, 'g-.') # Graficamos la frecuencia de palabras en un diagrama de barras
+    subplot1.set_title("The Cognitive Neuroscience Of Ageing")
+    subplot1.grid()
 
     subplot1 = figure1.add_subplot(324) # Se añade un subplot para el matplotlib donde se graficara dicha frecuencia
     yArt4 = frecuencia.palabras.loc[3]
     xArt4 = frecuencia.frecuencia.loc[3]
-    subplot1.bar(xArt4,yArt4, align='center') # Graficamos la frecuencia de palabras en un diagrama de barras
-    # subplot1.title(' Art4 ', fontsize=12)
+    subplot1.plot(xArt4,yArt4, 'c-.') # Graficamos la frecuencia de palabras en un diagrama de barras
+    subplot1.set_title("Intuition: A Social Cognitive Neuroscience Approach")
+    subplot1.grid()
 
     subplot1 = figure1.add_subplot(325) # Se añade un subplot para el matplotlib donde se graficara dicha frecuencia
     yArt5 = frecuencia.palabras.loc[4]
     xArt5 = frecuencia.frecuencia.loc[4]
-    subplot1.bar(xArt5,yArt5, align='center') # Graficamos la frecuencia de palabras en un diagrama de barras
-    # subplot1.title(' Art5 ', fontsize=12)
+    subplot1.plot(xArt5,yArt5, 'm-.') # Graficamos la frecuencia de palabras en un diagrama de barras
+    subplot1.set_title("Social Cognitive Neuroscience")
+    subplot1.grid()
 
     subplot1 = figure1.add_subplot(326) # Se añade un subplot para el matplotlib donde se graficara dicha frecuencia
     yArt6 = frecuencia.palabras.loc[5]
     xArt6 = frecuencia.frecuencia.loc[5]
-    subplot1.bar(xArt6,yArt6, align='center') # Graficamos la frecuencia de palabras en un diagrama de barras
-    # subplot1.title(' Art6 ', fontsize=12)
+    subplot1.plot(xArt6,yArt6, 'y-.') # Graficamos la frecuencia de palabras en un diagrama de barras
+    subplot1.set_title("Transcranial Magnetic Stimulation And Cognitive Neuroscience")
+    subplot1.grid()
 
     bar1 = FigureCanvasTkAgg(figure1, frecp) # Añadimos dicho grafico a la Interfaz grafica
     bar1.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=0) # damos la posicion para que aparezca la grafica
     toolbar = NavigationToolbar2Tk(bar1, frecp)# barra de iconos para guardar o configurar el grafico
     toolbar.update()
     bar1.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=1)
-
+    
 # Funcion donde se realiza el proceso del padre sintactico
 def padre_sintac():
     padS=tk.Toplevel()
     padS.title(" Padre Sintactico ")
     padS.geometry('400x400')
-    # canvas2=tk.Canvas(padS, width=900, height=400)
 
     button1 = tk.Button (padS, text=' Objetivo ',command=objetivo, font=('Arial', 11, 'bold'))
     button1.place(x=150, y=150)
-    # canvas2.create_window(100, 50, window=button1)
 
     button1 = tk.Button (padS, text=' Metodo ',command=metodo, font=('Arial', 11, 'bold'))
     button1.place(x=150, y=200)
@@ -114,45 +117,51 @@ def objetivo():
     subplot1 = figure1.add_subplot(321) # Se añade un subplot para el matplotlib donde se graficara dicha frecuencia
     yArt1 = pad_sintac1.padres.loc[0]
     xArt1 = pad_sintac1.frecuencia.loc[0]
-    subplot1.bar(xArt1,yArt1, align='center') # Graficamos la frecuencia de padres en un diagrama de barras
-    # subplot1.title(' Art1 ', fontsize=12)
+    subplot1.plot(xArt1,yArt1, 'b-.') # Graficamos la frecuencia de padres en un diagrama de barras
+    subplot1.set_title("articulo 1")
+    subplot1.grid()
     
     subplot1 = figure1.add_subplot(322) # Se añade un subplot para el matplotlib donde se graficara dicha frecuencia
     yArt2 = pad_sintac1.padres.loc[1]
     xArt2 = pad_sintac1.frecuencia.loc[1]
-    subplot1.bar(xArt2,yArt2, align='center') # Graficamos la frecuencia de padres en un diagrama de barras
+    subplot1.plot(xArt2,yArt2, 'r-.') # Graficamos la frecuencia de padres en un diagrama de barras
+    subplot1.set_title("articulo 2")
+    subplot1.grid()
     # subplot1.title(' Art2 ', fontsize=12)
 
     subplot1 = figure1.add_subplot(323) # Se añade un subplot para el matplotlib donde se graficara dicha frecuencia
     yArt3 = pad_sintac1.padres.loc[2]
     xArt3 = pad_sintac1.frecuencia.loc[2]
-    subplot1.bar(xArt3,yArt3, align='center') # Graficamos la frecuencia de padres en un diagrama de barras
-    # subplot1.title(' Art3 ', fontsize=12)
+    subplot1.plot(xArt3,yArt3, 'g-.') # Graficamos la frecuencia de padres en un diagrama de barras
+    subplot1.set_title("articulo 3")
+    subplot1.grid()
 
     subplot1 = figure1.add_subplot(324) # Se añade un subplot para el matplotlib donde se graficara dicha frecuencia
     yArt4 = pad_sintac1.padres.loc[3]
     xArt4 = pad_sintac1.frecuencia.loc[3]
-    subplot1.bar(xArt4,yArt4, align='center') # Graficamos la frecuencia de padres en un diagrama de barras
-    # subplot1.title(' Art4 ', fontsize=12)
+    subplot1.plot(xArt4,yArt4, 'c-.') # Graficamos la frecuencia de padres en un diagrama de barras
+    subplot1.set_title("articulo 4")
+    subplot1.grid()
 
     subplot1 = figure1.add_subplot(325) # Se añade un subplot para el matplotlib donde se graficara dicha frecuencia
     yArt5 = pad_sintac1.padres.loc[4]
     xArt5 = pad_sintac1.frecuencia.loc[4]
-    subplot1.bar(xArt5,yArt5, align='center') # Graficamos la frecuencia de padres en un diagrama de barras
-    # subplot1.title(' Art5 ', fontsize=12)
+    subplot1.plot(xArt5,yArt5, 'm-.') # Graficamos la frecuencia de padres en un diagrama de barras
+    subplot1.set_title("articulo 5")
+    subplot1.grid()
 
     subplot1 = figure1.add_subplot(326) # Se añade un subplot para el matplotlib donde se graficara dicha frecuencia
     yArt6 = pad_sintac1.padres.loc[5]
     xArt6 = pad_sintac1.frecuencia.loc[5]
-    subplot1.bar(xArt6,yArt6, align='center') # Graficamos la frecuencia de padres en un diagrama de barras
-    # subplot1.title(' Art6 ', fontsize=12)
+    subplot1.plot(xArt6,yArt6, 'y-.') # Graficamos la frecuencia de padres en un diagrama de barras
+    subplot1.set_title("articulo 6")
+    subplot1.grid()
 
     bar1 = FigureCanvasTkAgg(figure1, padS) # Añadimos dicho grafico a la Interfaz grafica
     bar1.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=0) # damos la posicion para que aparezca la grafica
     toolbar = NavigationToolbar2Tk(bar1, padS)# barra de iconos para guardar o configurar el grafico
     toolbar.update()
     bar1.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=1)
-
 
 def metodo():
     global bar1
@@ -166,38 +175,44 @@ def metodo():
     subplot1 = figure1.add_subplot(321) # Se añade un subplot para el matplotlib donde se graficara dicha frecuencia
     yArt1 = pad_sintac1.padres.loc[0]
     xArt1 = pad_sintac1.frecuencia.loc[0]
-    subplot1.bar(xArt1,yArt1, align='center') # Graficamos la frecuencia de padres en un diagrama de barras
-    # subplot1.title(' Art1 ', fontsize=12)
+    subplot1.plot(xArt1,yArt1, 'b-.') # Graficamos la frecuencia de padres en un diagrama de barras
+    subplot1.set_title("articulo 1")
+    subplot1.grid()
     
     subplot1 = figure1.add_subplot(322) # Se añade un subplot para el matplotlib donde se graficara dicha frecuencia
     yArt2 = pad_sintac1.padres.loc[1]
     xArt2 = pad_sintac1.frecuencia.loc[1]
-    subplot1.bar(xArt2,yArt2, align='center') # Graficamos la frecuencia de padres en un diagrama de barras
-    # subplot1.title(' Art2 ', fontsize=12)
+    subplot1.plot(xArt2,yArt2, 'r-.') # Graficamos la frecuencia de padres en un diagrama de barras
+    subplot1.set_title("articulo 2")
+    subplot1.grid()
 
     subplot1 = figure1.add_subplot(323) # Se añade un subplot para el matplotlib donde se graficara dicha frecuencia
     yArt3 = pad_sintac1.padres.loc[2]
     xArt3 = pad_sintac1.frecuencia.loc[2]
-    subplot1.bar(xArt3,yArt3, align='center') # Graficamos la frecuencia de padres en un diagrama de barras
-    # subplot1.title(' Art3 ', fontsize=12)
+    subplot1.plot(xArt3,yArt3, 'g-.') # Graficamos la frecuencia de padres en un diagrama de barras
+    subplot1.set_title("articulo 3")
+    subplot1.grid()
 
     subplot1 = figure1.add_subplot(324) # Se añade un subplot para el matplotlib donde se graficara dicha frecuencia
     yArt4 = pad_sintac1.padres.loc[3]
     xArt4 = pad_sintac1.frecuencia.loc[3]
-    subplot1.bar(xArt4,yArt4, align='center') # Graficamos la frecuencia de padres en un diagrama de barras
-    # subplot1.title(' Art4 ', fontsize=12)
+    subplot1.plot(xArt4,yArt4, 'c-.') # Graficamos la frecuencia de padres en un diagrama de barras
+    subplot1.set_title("articulo 4")
+    subplot1.grid()
 
     subplot1 = figure1.add_subplot(325) # Se añade un subplot para el matplotlib donde se graficara dicha frecuencia
     yArt5 = pad_sintac1.padres.loc[4]
     xArt5 = pad_sintac1.frecuencia.loc[4]
-    subplot1.bar(xArt5,yArt5, align='center') # Graficamos la frecuencia de padres en un diagrama de barras
-    # subplot1.title(' Art5 ', fontsize=12)
+    subplot1.plot(xArt5,yArt5, 'm-.') # Graficamos la frecuencia de padres en un diagrama de barras
+    subplot1.set_title("articulo 5")
+    subplot1.grid()
 
     subplot1 = figure1.add_subplot(326) # Se añade un subplot para el matplotlib donde se graficara dicha frecuencia
     yArt6 = pad_sintac1.padres.loc[5]
     xArt6 = pad_sintac1.frecuencia.loc[5]
-    subplot1.bar(xArt6,yArt6, align='center') # Graficamos la frecuencia de padres en un diagrama de barras
-    # subplot1.title(' Art6 ', fontsize=12)
+    subplot1.plot(xArt6,yArt6, 'y-.') # Graficamos la frecuencia de padres en un diagrama de barras
+    subplot1.set_title("articulo 6")
+    subplot1.grid()
 
     bar1 = FigureCanvasTkAgg(figure1, padS) # Añadimos dicho grafico a la Interfaz grafica
     bar1.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=0) # damos la posicion para que aparezca la grafica
@@ -217,38 +232,44 @@ def resultado():
     subplot1 = figure1.add_subplot(321) # Se añade un subplot para el matplotlib donde se graficara dicha frecuencia
     yArt1 = pad_sintac1.padres.loc[0]
     xArt1 = pad_sintac1.frecuencia.loc[0]
-    subplot1.bar(xArt1,yArt1, align='center') # Graficamos la frecuencia de padres en un diagrama de barras
-    # subplot1.title(' Art1 ', fontsize=12)
+    subplot1.plot(xArt1,yArt1, 'b-.') # Graficamos la frecuencia de padres en un diagrama de barras
+    subplot1.set_title("Cognitive Neuroscience Of Human Social Behaviour")
+    subplot1.grid()
     
     subplot1 = figure1.add_subplot(322) # Se añade un subplot para el matplotlib donde se graficara dicha frecuencia
     yArt2 = pad_sintac1.padres.loc[1]
     xArt2 = pad_sintac1.frecuencia.loc[1]
-    subplot1.bar(xArt2,yArt2, align='center') # Graficamos la frecuencia de padres en un diagrama de barras
-    # subplot1.title(' Art2 ', fontsize=12)
+    subplot1.plot(xArt2,yArt2, 'r-.') # Graficamos la frecuencia de padres en un diagrama de barras
+    subplot1.set_title("The Cognitive Neuroscience Of Ageing")
+    subplot1.grid()
 
     subplot1 = figure1.add_subplot(323) # Se añade un subplot para el matplotlib donde se graficara dicha frecuencia
     yArt3 = pad_sintac1.padres.loc[2]
     xArt3 = pad_sintac1.frecuencia.loc[2]
-    subplot1.bar(xArt3,yArt3, align='center') # Graficamos la frecuencia de padres en un diagrama de barras
-    # subplot1.title(' Art3 ', fontsize=12)
+    subplot1.plot(xArt3,yArt3, 'g-.') # Graficamos la frecuencia de padres en un diagrama de barras
+    subplot1.set_title("The Cognitive Neuroscience Of Ageing")
+    subplot1.grid()
 
     subplot1 = figure1.add_subplot(324) # Se añade un subplot para el matplotlib donde se graficara dicha frecuencia
     yArt4 = pad_sintac1.padres.loc[3]
     xArt4 = pad_sintac1.frecuencia.loc[3]
-    subplot1.bar(xArt4,yArt4, align='center') # Graficamos la frecuencia de padres en un diagrama de barras
-    # subplot1.title(' Art4 ', fontsize=12)
+    subplot1.plot(xArt4,yArt4, 'c-.') # Graficamos la frecuencia de padres en un diagrama de barras
+    subplot1.set_title("Intuition: A Social Cognitive Neuroscience Approach")
+    subplot1.grid()
 
     subplot1 = figure1.add_subplot(325) # Se añade un subplot para el matplotlib donde se graficara dicha frecuencia
     yArt5 = pad_sintac1.padres.loc[4]
     xArt5 = pad_sintac1.frecuencia.loc[4]
-    subplot1.bar(xArt5,yArt5, align='center') # Graficamos la frecuencia de padres en un diagrama de barras
-    # subplot1.title(' Art5 ', fontsize=12)
+    subplot1.plot(xArt5,yArt5, 'm-.') # Graficamos la frecuencia de padres en un diagrama de barras
+    subplot1.set_title("Social Cognitive Neuroscience")
+    subplot1.grid()
 
     subplot1 = figure1.add_subplot(326) # Se añade un subplot para el matplotlib donde se graficara dicha frecuencia
     yArt6 = pad_sintac1.padres.loc[5]
     xArt6 = pad_sintac1.frecuencia.loc[5]
-    subplot1.bar(xArt6,yArt6, align='center') # Graficamos la frecuencia de padres en un diagrama de barras
-    # subplot1.title(' Art6 ', fontsize=12)
+    subplot1.plot(xArt6,yArt6, 'y-.') # Graficamos la frecuencia de padres en un diagrama de barras
+    subplot1.set_title("Transcranial Magnetic Stimulation And Cognitive Neuroscience")
+    subplot1.grid()
 
     bar1 = FigureCanvasTkAgg(figure1, padS) # Añadimos dicho grafico a la Interfaz grafica
     bar1.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=0) # damos la posicion para que aparezca la grafica
@@ -268,38 +289,44 @@ def conclusion():
     subplot1 = figure1.add_subplot(321) # Se añade un subplot para el matplotlib donde se graficara dicha frecuencia
     yArt1 = pad_sintac1.padres.loc[0]
     xArt1 = pad_sintac1.frecuencia.loc[0]
-    subplot1.bar(xArt1,yArt1, align='center') # Graficamos la frecuencia de padres en un diagrama de barras
-    # subplot1.title(' Art1 ', fontsize=12)
+    subplot1.plot(xArt1,yArt1, 'b-.') # Graficamos la frecuencia de padres en un diagrama de barras
+    subplot1.set_title("articulo 1")
+    subplot1.grid()
     
     subplot1 = figure1.add_subplot(322) # Se añade un subplot para el matplotlib donde se graficara dicha frecuencia
     yArt2 = pad_sintac1.padres.loc[1]
     xArt2 = pad_sintac1.frecuencia.loc[1]
-    subplot1.bar(xArt2,yArt2, align='center') # Graficamos la frecuencia de padres en un diagrama de barras
-    # subplot1.title(' Art2 ', fontsize=12)
+    subplot1.plot(xArt2,yArt2, 'r-.') # Graficamos la frecuencia de padres en un diagrama de barras
+    subplot1.set_title("articulo 2")
+    subplot1.grid()
 
     subplot1 = figure1.add_subplot(323) # Se añade un subplot para el matplotlib donde se graficara dicha frecuencia
     yArt3 = pad_sintac1.padres.loc[2]
     xArt3 = pad_sintac1.frecuencia.loc[2]
-    subplot1.bar(xArt3,yArt3, align='center') # Graficamos la frecuencia de padres en un diagrama de barras
-    # subplot1.title(' Art3 ', fontsize=12)
+    subplot1.plot(xArt3,yArt3, 'g-.') # Graficamos la frecuencia de padres en un diagrama de barras
+    subplot1.set_title("articulo 3")
+    subplot1.grid()
 
     subplot1 = figure1.add_subplot(324) # Se añade un subplot para el matplotlib donde se graficara dicha frecuencia
     yArt4 = pad_sintac1.padres.loc[3]
     xArt4 = pad_sintac1.frecuencia.loc[3]
-    subplot1.bar(xArt4,yArt4, align='center') # Graficamos la frecuencia de padres en un diagrama de barras
-    # subplot1.title(' Art4 ', fontsize=12)
+    subplot1.plot(xArt4,yArt4, 'c-.') # Graficamos la frecuencia de padres en un diagrama de barras
+    subplot1.set_title("articulo 4")
+    subplot1.grid()
 
     subplot1 = figure1.add_subplot(325) # Se añade un subplot para el matplotlib donde se graficara dicha frecuencia
     yArt5 = pad_sintac1.padres.loc[4]
     xArt5 = pad_sintac1.frecuencia.loc[4]
-    subplot1.bar(xArt5,yArt5, align='center') # Graficamos la frecuencia de padres en un diagrama de barras
-    # subplot1.title(' Art5 ', fontsize=12)
+    subplot1.plot(xArt5,yArt5, 'm-.') # Graficamos la frecuencia de padres en un diagrama de barras
+    subplot1.set_title("articulo 5")
+    subplot1.grid()
 
     subplot1 = figure1.add_subplot(326) # Se añade un subplot para el matplotlib donde se graficara dicha frecuencia
     yArt6 = pad_sintac1.padres.loc[5]
     xArt6 = pad_sintac1.frecuencia.loc[5]
-    subplot1.bar(xArt6,yArt6, align='center') # Graficamos la frecuencia de padres en un diagrama de barras
-    # subplot1.title(' Art6 ', fontsize=12)
+    subplot1.plot(xArt6,yArt6, 'y-.') # Graficamos la frecuencia de padres en un diagrama de barras
+    subplot1.set_title("articulo 6")
+    subplot1.grid()
 
     bar1 = FigureCanvasTkAgg(figure1, padS) # Añadimos dicho grafico a la Interfaz grafica
     bar1.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=0) # damos la posicion para que aparezca la grafica
@@ -349,7 +376,6 @@ def objetivo2():
     label=tk.Label(simiN, text=niv4).pack(side=tk.TOP)
     label=tk.Label(simiN, text=" Articulos Combinados: 5-6 ").pack(side=tk.TOP)
     label=tk.Label(simiN, text=niv5).pack(side=tk.TOP)
-
 
 def metodo2():
     archiv=carga_arc.cargar_archivos()

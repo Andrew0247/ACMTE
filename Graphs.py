@@ -2,7 +2,7 @@ from nltk.corpus import wordnet as wn
 import pandas as pd, spacy
 from collections import Counter
 #Importando todos los métodos de la biblioteca MyNLP
-from MyNLP import * 
+from Tesauros_NLP import * 
 
 class Graphs():
 
