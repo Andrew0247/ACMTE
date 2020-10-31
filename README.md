@@ -1,7 +1,7 @@
-# ACMTE
+# GraphsOfSciencie
 Project of an Application to Support the Construction of Theoretical Frames.
 
-The following project is done in <Code> python </Code>. The file <Code> Interfaz_App2.py </Code> must be executed to carry out the respective processes which will help in the creation of a theoretical framework.
+The following project is done in <Code> python </Code>. The file <Code> GraphsOfSciencie.py </Code> must be executed to carry out the respective processes which will help in the creation of a theoretical framework.
 
 To use this project, the following libraries must be installed:
 <ul>
