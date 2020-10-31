@@ -17,4 +17,4 @@ To use this project, the following libraries must be installed:
   <li><a href="https://docs.python.org/3/library/tkinter.html">Tkinter</a>: Used to make graphical interfaces in an intuitive way, so to speak. It usually comes installed by default with python.</li>
 </ul>
   
-A library called **MyNLP** is also used, which is used to extract the different definitions of the **most frequent synonyms** in the text. A method for graphing **Graphs** is added, with which the **hyperonyms** of the synonyms of the text would be visualized. It should be noted that the **MyNLP** library is created by **Magister Héctor Andrés Mora**, you can visit his repository by clicking <a href="https://github.com/magohector">here</a>.
+A library called **MyNLP** is also used, which is used to extract the different definitions of the **most frequent synonyms** in the text. A method for graphing **Graphs** is added, with which the **hyperonyms** of the synonyms of the text would be visualized. It should be noted that the **Tesauros_NLP** library is created by **Magister Héctor Andrés Mora**, you can visit his repository by clicking <a href="https://github.com/magohector">here</a>.
